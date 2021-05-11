@@ -17,7 +17,7 @@
     <audio autoplay loop src="https://github.com/tholman/elevator.js/blob/master/demo/music/elevator.mp3?raw=true"></audio>
 </body>
 <script>
-    let text = document.getElementById('floor')
+    var text = document.getElementById('floor')
     window.onload = () => {
         setInterval(() => {
             text.innerText = parseInt(text.innerText) + 1
