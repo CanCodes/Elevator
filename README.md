@@ -6,6 +6,7 @@ Your homemade elevator that goes to the moon 🚀
 - [ ] Add floor achivements 
 - [ ] Add floor selector
 - [ ] Dark mode just for fun
+- [ ] Add meta tags for embedding
 
 ## Why?
 Good Question but I am afraid this information is classified.
