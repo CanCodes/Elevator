@@ -1,27 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-    <title>Elevator</title>
-</head>
-<body class="overflow-hidden">
-    <div class="h-screen w-screen flex items-center overflow-hidden justify-center">
-        <span class="text-9xl select-none">
-            <span id="arrow" class="text-red-500">🠕 </span><span id="floor">0</span>
-        </span>
-
-    </div>
-    <audio autoplay loop src="https://github.com/tholman/elevator.js/blob/master/demo/music/elevator.mp3?raw=true"></audio>
-</body>
-<script>
-    const text = document.getElementById('floor')
-    window.onload = () => {
-        setInterval(() => {
-            text.innerText = parseInt(text.innerText) + 1
-        }, 1500);
-    }
-</script>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="HandheldFriendly" content="true" />
+		<meta name="robots" content="INDEX, FOLLOW" />
+		<meta name="theme-color" content="#00f9ff" />
+		<meta
+			name="description"
+			content="Your homemade elevator that goes to the moon 🚀"
+		/>
+		<meta name="og:title" content="Elevator" />
+		<meta name="og:site_name" content="Elevator" title="title" />
+		<meta name="keywords" content="elevator, homemade, to, the, moon" />
+		<meta name="og:image" content="./banner.png" />
+		<meta name="twitter:image" content="./banner.png" />
+		<link rel="icon" href="./banner.png" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+			rel="stylesheet"
+		/>
+		<title>Elevator</title>
+	</head>
+	<body class="overflow-hidden">
+		<div
+			class="
+				h-screen
+				w-screen
+				flex
+				items-center
+				overflow-hidden
+				justify-center
+			"
+		>
+			<span class="text-9xl select-none">
+				<span id="arrow" class="text-red-500">🠕 </span
+				><span id="floor">0</span>
+			</span>
+		</div>
+		<audio
+			autoplay
+			loop
+			src="https://github.com/tholman/elevator.js/blob/master/demo/music/elevator.mp3?raw=true"
+		></audio>
+	</body>
+	<script>
+		const text = document.getElementById("floor");
+		window.onload = () => {
+			setInterval(() => {
+				text.innerText = parseInt(text.innerText) + 1;
+			}, 1500);
+		};
+	</script>
 </html>
