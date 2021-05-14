@@ -1,56 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="HandheldFriendly" content="true" />
-		<meta name="robots" content="INDEX, FOLLOW" />
-		<meta name="theme-color" content="#00f9ff" />
-		<meta
-			name="description"
-			content="Your homemade elevator that goes to the moon 🚀"
-		/>
-		<meta name="og:title" content="Elevator" />
-		<meta name="og:site_name" content="Elevator" title="title" />
-		<meta name="keywords" content="elevator, homemade, to, the, moon" />
-		<meta name="og:image" content="/banner.png" />
-		<meta name="twitter:image" content="/banner.png" />
-		<link rel="icon" href="./banner.png" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link
-			href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
-			rel="stylesheet"
-		/>
-		<title>Elevator</title>
-	</head>
-	<body class="overflow-hidden">
-		<div
-			class="
-				h-screen
-				w-screen
-				flex
-				items-center
-				overflow-hidden
-				justify-center
-			"
-		>
-			<span class="text-9xl select-none">
-				<span id="arrow" class="text-red-500">🠕 </span
-				><span id="floor">0</span>
-			</span>
-		</div>
-		<audio
-			autoplay
-			loop
-			src="https://github.com/tholman/elevator.js/blob/master/demo/music/elevator.mp3?raw=true"
-		></audio>
-	</body>
-	<script>
-		const text = document.getElementById("floor");
-		window.onload = () => {
-			setInterval(() => {
-				text.innerText = parseInt(text.innerText) + 1;
-			}, 1500);
-		};
-	</script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="robots" content="INDEX, FOLLOW" />
+    <meta name="theme-color" content="#00f9ff" />
+    <meta
+      name="description"
+      content="Your homemade elevator that goes to the moon 🚀"
+    />
+    <meta name="og:title" content="Elevator" />
+    <meta name="og:site_name" content="Elevator" title="title" />
+    <meta name="keywords" content="elevator, homemade, to, the, moon" />
+    <meta name="og:image" content="/banner.png" />
+    <meta name="twitter:image" content="/banner.png" />
+    <link rel="icon" href="./banner.png" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <title>Elevator</title>
+  </head>
+  <body class="overflow-hidden bg-gray-100">
+    <button
+      onclick="change()"
+      id="theme"
+      class="absolute right-0 m-5 text-5xl focus:outline-none"
+    >
+      <svg
+        id="light"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        aria-hidden="true"
+        role="img"
+        class="block"
+        width="1em"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        viewBox="0 0 32 32"
+      >
+        <path
+          d="M16 12.005a4 4 0 1 1-4 4a4.005 4.005 0 0 1 4-4m0-2a6 6 0 1 0 6 6a6 6 0 0 0-6-6z"
+          fill="currentColor"
+        ></path>
+        <path
+          d="M5.394 6.813l1.414-1.415l3.506 3.506L8.9 10.318z"
+          fill="currentColor"
+        ></path>
+        <path d="M2 15.005h5v2H2z" fill="currentColor"></path>
+        <path
+          d="M5.394 25.197L8.9 21.691l1.414 1.415l-3.506 3.505z"
+          fill="currentColor"
+        ></path>
+        <path d="M15 25.005h2v5h-2z" fill="currentColor"></path>
+        <path
+          d="M21.687 23.106l1.414-1.415l3.506 3.506l-1.414 1.414z"
+          fill="currentColor"
+        ></path>
+        <path d="M25 15.005h5v2h-5z" fill="currentColor"></path>
+        <path
+          d="M21.687 8.904l3.506-3.506l1.414 1.415l-3.506 3.505z"
+          fill="currentColor"
+        ></path>
+        <path d="M15 2.005h2v5h-2z" fill="currentColor"></path>
+      </svg>
+      <svg
+        id="dark"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        aria-hidden="true"
+        role="img"
+        class="hidden"
+        width="1em"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        viewBox="0 0 32 32"
+      >
+        <path
+          d="M13.502 5.414a15.075 15.075 0 0 0 11.594 18.194a11.113 11.113 0 0 1-7.975 3.39c-.138 0-.278.005-.418 0a11.094 11.094 0 0 1-3.2-21.584M14.98 3a1.002 1.002 0 0 0-.175.016a13.096 13.096 0 0 0 1.825 25.981c.164.006.328 0 .49 0a13.072 13.072 0 0 0 10.703-5.555a1.01 1.01 0 0 0-.783-1.565A13.08 13.08 0 0 1 15.89 4.38A1.015 1.015 0 0 0 14.98 3z"
+          fill="currentColor"
+        ></path>
+      </svg>
+    </button>
+    <div
+      class="flex items-center justify-center w-screen h-screen overflow-hidden"
+    >
+      <span class="select-none text-9xl">
+        <span id="arrow" class="text-red-500">🠕 </span><span id="floor">0</span>
+      </span>
+    </div>
+
+    <audio
+      autoplay
+      loop
+      src="https://github.com/tholman/elevator.js/blob/master/demo/music/elevator.mp3?raw=true"
+    ></audio>
+  </body>
+  <script>
+    const text = document.getElementById("floor");
+    window.onload = () => {
+      setInterval(() => {
+        text.innerText = parseInt(text.innerText) + 1;
+      }, 1500);
+    };
+
+    function change() {
+      var osbir = document.getElementById("theme");
+
+      if (!document.body.classList.contains("bg-gray-900")) {
+        document.body.classList.add("bg-gray-900", "text-white");
+        document.getElementById("dark").classList.replace("hidden", "block");
+        document.getElementById("light").classList.replace("block", "hidden");
+        return;
+      }
+
+      document.body.classList.remove("bg-gray-900", "text-white");
+      document.getElementById("light").classList.replace("hidden", "block");
+      document.getElementById("dark").classList.replace("block", "hidden");
+    }
+  </script>
 </html>
