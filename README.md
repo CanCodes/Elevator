@@ -7,7 +7,7 @@ Your homemade elevator that goes to the moon 🚀
 -   [ ] Notify first comers to turn on autoplay
 -   [ ] Add floor achivements
 -   [ ] Add floor selector
--   [ ] Dark mode just for fun
+-   [x] Dark mode just for fun
 -   [x] Add meta tags for embedding
 
 ## Why?
