@@ -113,15 +113,22 @@
   <script>
     const text = document.getElementById("floor");
     window.onload = () => {
+      let theme = localStorage.getItem("theme");
+      if (!theme) localStorage.setItem("theme", "light");
+      if (theme == "dark") {
+        document.body.classList.add("bg-gray-900", "text-white");
+        document.getElementById("dark").classList.replace("hidden", "block");
+        document.getElementById("light").classList.replace("block", "hidden");
+      }
       setInterval(() => {
         text.innerText = parseInt(text.innerText) + 1;
       }, 1500);
     };
 
     function change() {
-      var osbir = document.getElementById("theme");
-
-      if (!document.body.classList.contains("bg-gray-900")) {
+      let tema = localStorage.getItem("theme");
+      if (tema != "dark") {
+        localStorage.setItem("theme", "dark");
         document.body.classList.add("bg-gray-900", "text-white");
         document.getElementById("dark").classList.replace("hidden", "block");
         document.getElementById("light").classList.replace("block", "hidden");
@@ -131,6 +138,7 @@
       document.body.classList.remove("bg-gray-900", "text-white");
       document.getElementById("light").classList.replace("hidden", "block");
       document.getElementById("dark").classList.replace("block", "hidden");
+      localStorage.setItem("theme", "light");
     }
   </script>
 </html>
