@@ -12,14 +12,20 @@
     <meta name="og:title" content="Elevator" />
     <meta name="og:site_name" content="Elevator" title="title" />
     <meta name="keywords" content="elevator, homemade, to, the, moon" />
-    <meta name="og:image" content="https://cancodes.github.io/Elevator/banner.png" />
+    <meta
+      name="og:image"
+      content="https://cancodes.github.io/Elevator/banner.png"
+    />
     <meta name="twitter:title" content="Elevator" />
     <meta
       name="twitter:description"
       content="Your homemade elevator that goes to the moon 🚀"
     />
-    <meta name="twitter:image" content="https://cancodes.github.io/Elevator/banner.png" />
-    <meta name="twitter:card" content="summary_large_image">
+    <meta
+      name="twitter:image"
+      content="https://cancodes.github.io/Elevator/banner.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="./banner.png" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -107,15 +113,22 @@
   <script>
     const text = document.getElementById("floor");
     window.onload = () => {
+      let theme = localStorage.getItem("theme");
+      if (!theme) localStorage.setItem("theme", "light");
+      if (theme == "dark") {
+        document.body.classList.add("bg-gray-900", "text-white");
+        document.getElementById("dark").classList.replace("hidden", "block");
+        document.getElementById("light").classList.replace("block", "hidden");
+      }
       setInterval(() => {
         text.innerText = parseInt(text.innerText) + 1;
       }, 1500);
     };
 
     function change() {
-      var osbir = document.getElementById("theme");
-
-      if (!document.body.classList.contains("bg-gray-900")) {
+      let tema = localStorage.getItem("theme");
+      if (tema != "dark") {
+        localStorage.setItem("theme", "dark");
         document.body.classList.add("bg-gray-900", "text-white");
         document.getElementById("dark").classList.replace("hidden", "block");
         document.getElementById("light").classList.replace("block", "hidden");
@@ -125,6 +138,7 @@
       document.body.classList.remove("bg-gray-900", "text-white");
       document.getElementById("light").classList.replace("hidden", "block");
       document.getElementById("dark").classList.replace("block", "hidden");
+      localStorage.setItem("theme", "light");
     }
   </script>
 </html>
