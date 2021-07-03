@@ -36,6 +36,7 @@
     <title>Elevator</title>
   </head>
   <body class="overflow-hidden bg-gray-100">
+    <input type="range" name="volume" id="" />
     <button
       onclick="change()"
       id="theme"
@@ -103,14 +104,17 @@
         <span id="arrow" class="text-red-500">🠕 </span><span id="floor">0</span>
       </span>
     </div>
-
-    <audio
-      autoplay
-      loop
-      src="https://github.com/tholman/elevator.js/blob/master/demo/music/elevator.mp3?raw=true"
-    ></audio>
   </body>
   <script>
+    var audio = new Audio("elevator.mp3");
+
+    if (!("theme" in localStorage)) {
+      var ask = confirm("Do you want to turn on autoplay?");
+      if (ask == true) {
+        audio.play();
+      }
+    }
+
     const text = document.getElementById("floor");
     window.onload = () => {
       let theme = localStorage.getItem("theme");
