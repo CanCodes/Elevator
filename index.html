@@ -104,45 +104,64 @@
         <span id="arrow" class="text-red-500">🠕 </span><span id="floor">0</span>
       </span>
     </div>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      const audio = new Audio("elevator.mp3");
+      const floor = $("#floor");
+      const dark = $("#dark");
+      const light = $("#light");
+      const body = $(document.body);
+
+      $(window).ready(() => {
+        let autoplay = localStorage.getItem("autoplay");
+        if (!autoplay) {
+          const prompt = confirm("Do you want to turn on auto play?");
+          const val = prompt ? "true" : "false";
+          localStorage.setItem("autoplay", val);
+          autoplay = val;
+        }
+        autoplay = autoplay == "true";
+        if (autoplay) {
+          audio.play();
+        }
+
+        let theme = localStorage.getItem("theme");
+        if (!theme) localStorage.setItem("theme", "light");
+        if (theme == "dark") {
+          body.addClass("bg-gray-900 text-white");
+          dark.removeClass("hidden");
+          light.removeClass("block");
+          dark.addClass("block");
+          light.addClass("hidden");
+        }
+
+        setInterval(() => {
+          floor.text(parseInt(floor.text()) + 1);
+        }, 1500);
+      });
+
+      function change() {
+        let tema = localStorage.getItem("theme");
+        if (tema != "dark") {
+          localStorage.setItem("theme", "dark");
+          body.addClass("bg-gray-900 text-white");
+          dark.removeClass("hidden");
+          light.removeClass("block");
+          dark.addClass("block");
+          light.addClass("hidden");
+          return;
+        }
+        body.removeClass("bg-gray-900 text-white");
+        light.removeClass("hidden");
+        dark.removeClass("block");
+        light.addClass("block");
+        dark.addClass("hidden");
+        localStorage.setItem("theme", "light");
+      }
+    </script>
   </body>
-  <script>
-    var audio = new Audio("elevator.mp3");
-
-    if (!("theme" in localStorage)) {
-      var ask = confirm("Do you want to turn on autoplay?");
-      if (ask == true) {
-        audio.play();
-      }
-    }
-
-    const text = document.getElementById("floor");
-    window.onload = () => {
-      let theme = localStorage.getItem("theme");
-      if (!theme) localStorage.setItem("theme", "light");
-      if (theme == "dark") {
-        document.body.classList.add("bg-gray-900", "text-white");
-        document.getElementById("dark").classList.replace("hidden", "block");
-        document.getElementById("light").classList.replace("block", "hidden");
-      }
-      setInterval(() => {
-        text.innerText = parseInt(text.innerText) + 1;
-      }, 1500);
-    };
-
-    function change() {
-      let tema = localStorage.getItem("theme");
-      if (tema != "dark") {
-        localStorage.setItem("theme", "dark");
-        document.body.classList.add("bg-gray-900", "text-white");
-        document.getElementById("dark").classList.replace("hidden", "block");
-        document.getElementById("light").classList.replace("block", "hidden");
-        return;
-      }
-
-      document.body.classList.remove("bg-gray-900", "text-white");
-      document.getElementById("light").classList.replace("hidden", "block");
-      document.getElementById("dark").classList.replace("block", "hidden");
-      localStorage.setItem("theme", "light");
-    }
-  </script>
 </html>
